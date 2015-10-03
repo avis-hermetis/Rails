@@ -2,7 +2,8 @@
 
 <p>
   <strong>Маршрут:</strong>
-  <%= @route.title %>
+  <%= @route.title = "#{@route.start_station}-#{@route.end_station}" %> 
+  <% @route.save %>  
 </p>
 
 <%= link_to 'Редактировать', edit_route_path(@route) %> |

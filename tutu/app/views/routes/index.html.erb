@@ -11,9 +11,10 @@
   </thead>
 
   <tbody>
-    <% @routes.each do |route| %>
+    <% @routes.each do |route| %>       
       <tr>
-        <td><%= route.title %></td>
+        <td><%= route.title = "#{route.start_station}-#{route.end_station}" %></td> 
+        <% route.save %>         
         <td><%= link_to 'Показать', route %></td>
         <td><%= link_to 'Редактировать', edit_route_path(route) %></td>
         <td><%= link_to 'Удалить', route, method: :delete, data: { confirm: 'Вы уверены?' } %></td>

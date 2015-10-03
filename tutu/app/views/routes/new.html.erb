@@ -13,13 +13,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <div class="field">    
+    <%= f.label :title %><br>   
+    <%= f.text_field :start_station %>    
+    <%= f.text_field :end_station %>                       
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>
-
+<% end %>  
 <%= link_to 'Назад', routes_path %>
