@@ -5,5 +5,37 @@
   <%= @train.number %>
 </p>
 
+<p>
+  <strong>Кол-во купейных вагонов: </strong>
+  <% compartment_count = 0 %>
+  <% econom_count = 0 %>
+  <% @train.wagons.each do |wagon| %>
+  <% compartment_count += 1 if wagon.sort == "купе" %>
+  <% end %>
+  <%= compartment_count %><br>
+  <strong>Кол-во плацкартных вагонов: </strong>
+  <% @train.wagons.each do |wagon| %>
+  <% econom_count += 1 if wagon.sort == "плацкарт" %>
+  <% end %>
+   <%= econom_count %><br>
+</p> 
+
+<p>
+  <strong>Кол-во мест в купе: </strong><br>
+  верхник - <%= econom_count * 28 %><br>
+  нижних - <%= econom_count * 28 %><br>
+  <strong>Кол-во плацкартных мест: </strong><br>
+  верхник - <%= econom_count * 18 %><br>
+  нижних - <%= econom_count * 18 %><br>
+</p>
+
+<p>
+  <strong>Маршрут следования: </strong> 
+    <% if @train.current_route.title.present? %>
+      <%= @train.current_route.title %>
+    <% else %> 
+      Маршрут не назначен
+      <% end %> 
+</p>
 <%= link_to 'Редактировать', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>
