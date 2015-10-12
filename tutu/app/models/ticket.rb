@@ -1,4 +1,6 @@
 class Ticket < ActiveRecord::Base
+ validates :number, :full_name, presence: true
+
   belongs_to :user
   belongs_to :train 
   

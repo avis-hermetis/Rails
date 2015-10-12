@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Проданные билеты</h1>
+
+<table border = '1'>
+  <thead>
+    <tr>
+      <th>Маршрут</th>        
+      <th>ФИО</th>
+      <th>Поезд № </th>     
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tickets.each do |ticket| %>   
+    <tr>
+  <td><%= "#{ticket.start_station.title} - #{ticket.end_station.title}"%></td>
+  <td><%= ticket.full_name %></td>
+  <td align = 'center' ><%= ticket.train.number %></td>                 
+  <td><%= link_to 'Показать', ticket %></td>
+  <td><%= link_to 'Редактировать', edit_ticket_path(ticket) %></td>
+  <td><%= link_to 'Удалить', ticket, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+  <% end %>   
+</tr>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Взять билет', new_ticket_path %>
+<%= link_to 'На главную', welcome_index_path %>
