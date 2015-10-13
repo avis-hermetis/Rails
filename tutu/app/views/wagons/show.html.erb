@@ -6,17 +6,11 @@
 </p>
 
 <p>
-  <strong>Количество мест:</strong><br>
-  <% if @wagon.sort == "купе"%>
-  <%= "#{@wagon.upper_places = 28} верхних" %><br>
-  <%= "#{@wagon.lower_places = 28} нижних" %><br>
-  <% @wagon.save %>
-  <% else %>
-  <%= "#{@wagon.upper_places = 18} верхних" %><br>
-  <%= "#{@wagon.lower_places = 18} нижних" %><br>
-  <% @wagon.save %>
-  <% end %>
-  </p>
+  <strong>Количество мест:</strong><br>  
+   <% @wagon.places_amt %><br>
+  <%= "#{@wagon.upper_places} верхних" %><br>
+  <%= "#{@wagon.lower_places} нижних" %><br>  
+</p>
 
 <%= link_to 'Редактировать', edit_wagon_path(@wagon) %> |
 <%= link_to 'Назад', wagons_path %>

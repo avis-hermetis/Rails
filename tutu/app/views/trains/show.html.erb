@@ -7,26 +7,20 @@
 
 <p>
   <strong>Кол-во купейных вагонов: </strong>
-  <% compartment_count = 0 %>
-  <% econom_count = 0 %>
-  <% @train.wagons.each do |wagon| %>
-  <% compartment_count += 1 if wagon.sort == "купе" %>
-  <% end %>
-  <%= compartment_count %><br>
+  <%= c_wagon_amt = @train.c_wagon_amt %>
+
   <strong>Кол-во плацкартных вагонов: </strong>
-  <% @train.wagons.each do |wagon| %>
-  <% econom_count += 1 if wagon.sort == "плацкарт" %>
-  <% end %>
-   <%= econom_count %><br>
+  <%= e_wagon_amt = @train.e_wagon_amt %>
 </p> 
 
 <p>
   <strong>Кол-во мест в купе: </strong><br>
-  верхник - <%= econom_count * 28 %><br>
-  нижних - <%= econom_count * 28 %><br>
+  верхник - <%= @train.c_up_places %><br>
+  нижних - <%= @train.c_low_places %><br>
+
   <strong>Кол-во плацкартных мест: </strong><br>
-  верхник - <%= econom_count * 18 %><br>
-  нижних - <%= econom_count * 18 %><br>
+  верхник - <%= @train.e_up_places %><br>
+  нижних - <%= @train.e_low_places %><br>
 </p>
 
 <p>
