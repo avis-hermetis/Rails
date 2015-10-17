@@ -6,41 +6,34 @@ class Train < ActiveRecord::Base
 
   has_many :wagons
 
-  def c_wagon_amt
-    compartment_count = 0 
-    self.wagons.each do |wagon|
-    compartment_count += 1 if wagon.sort == "купе" 
-    end 
-    compartment_count
-  end
+  attr_accessor :e_up_places,  :e_low_places, :c_up_places, :c_low_places
 
   def e_wagon_amt
     econom_count = 0
+    @e_up_places = 0
+    @e_low_places = 0
     self.wagons.each do |wagon| 
-    econom_count += 1 if wagon.sort == "плацкарт" 
-    end 
-    econom_count
+     if wagon.sort == "плацкарт"
+      econom_count += 1
+      @e_up_places += wagon.upper_places
+      @e_low_places += wagon.lower_places
+     end
+   end
+   econom_count
   end
 
-  def c_up_places
-    c_wagon_amt * C_UP_PLACES
+  def c_wagon_amt
+    compartment_count = 0
+    @c_up_places = 0
+    @c_low_places = 0
+    self.wagons.each do |wagon| 
+      if wagon.sort == "купе"
+      compartment_count += 1
+      @c_up_places += wagon.upper_places
+      @c_low_places += wagon.lower_places
+      end
+    end
+    compartment_count
   end
-
-  def c_low_places
-    c_wagon_amt * C_LOW_PLACES
-  end
-
-  def e_up_places
-    e_wagon_amt * E_UP_PLACES
-  end
-
-  def e_low_places
-    e_wagon_amt * E_LOW_PLACES
-  end
-
-  C_LOW_PLACES = 18
-  E_LOW_PLACES = 28
-  C_UP_PLACES = 18
-  E_UP_PLACES = 28
 
 end
