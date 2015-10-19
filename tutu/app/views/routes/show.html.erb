@@ -9,7 +9,7 @@
   <strong>Поезда на маршруте: </strong> <br>
     <% if @route.trains.present? %>
       <% @route.trains.each do |train| %>
-      <%= train.number %> <br>
+      <%= train.number %> <br>     
       <% end %>
     <% else %>  
       На маршруте нет поездов

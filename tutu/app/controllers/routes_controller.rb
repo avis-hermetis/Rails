@@ -17,7 +17,7 @@ class RoutesController < ApplicationController
     if @route.save
       redirect_to @route
     else
-      render :new
+      render :edit
     end
   end
 

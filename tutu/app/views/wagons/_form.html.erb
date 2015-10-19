@@ -7,6 +7,13 @@
 <%= f.radio_button(:sort, "плацкарт") %>
 <%= f.label(:sort, "плацкарт") %>
  </div>
+
+ <div class="field">
+    <%= f.label :upper_places, "Кол-во верхних мест" %><br>
+    <%= f.text_field :upper_places %><br>
+    <%= f.label :lower_places, "Кол-во нижних мест" %><br>
+    <%= f.text_field :lower_places %>
+  </div>
  
   <div class="field">
     <%= f.label :train, "Поезд" %><br>
