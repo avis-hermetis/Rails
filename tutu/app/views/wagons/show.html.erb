@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Вагон:</strong>
+  <%= @wagon.sort %><br>
+</p>
+
+<p>
+  <strong>Количество мест:</strong><br>
+  <%= "#{@wagon.upper_places} верхних" %><br>
+  <%= "#{@wagon.lower_places} нижних" %><br>  
+</p>
+
+<%= link_to 'Редактировать', edit_wagon_path(@wagon) %> |
+<%= link_to 'Назад', wagons_path %>
+

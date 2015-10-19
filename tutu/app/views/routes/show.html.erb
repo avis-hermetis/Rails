@@ -2,8 +2,29 @@
 
 <p>
   <strong>Маршрут:</strong>
-  <%= @route.title = "#{@route.start_station}-#{@route.end_station}" %> 
-  <% @route.save %>  
+  <%= @route.title %>  
+</p>
+
+<p>
+  <strong>Поезда на маршруте: </strong> <br>
+    <% if @route.trains.present? %>
+      <% @route.trains.each do |train| %>
+      <%= train.number %> <br>     
+      <% end %>
+    <% else %>  
+      На маршруте нет поездов
+      <% end %> 
+</p>
+
+<p>
+  <strong>Список станций в маршруте: </strong> 
+    <% if @route.railway_stations.empty? %>
+      пуст
+      <% else %>
+      <% @route.railway_stations.each do |station| %> 
+       <%= "#{station.title }" %>  
+       <% end %> 
+    <% end %> 
 </p>
 
 <%= link_to 'Редактировать', edit_route_path(@route) %> |
