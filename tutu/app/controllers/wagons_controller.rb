@@ -14,7 +14,7 @@ class WagonsController < ApplicationController
 
   def create
     @wagon = Wagon.new(wagon_params)
-    if @wagon.save
+       if @wagon.save
       redirect_to @wagon
     else
       render :new
@@ -46,5 +46,5 @@ class WagonsController < ApplicationController
   def wagon_params
     params.require(:wagon).permit(:sort, :upper_places, :lower_places, :train_id)
   end
-  
+
 end

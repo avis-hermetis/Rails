@@ -7,7 +7,7 @@ class Train < ActiveRecord::Base
   has_many :wagons
 
   attr_accessor :e_up_places,  :e_low_places, :c_up_places, :c_low_places
-
+  
   def e_wagon_amt
     econom_count = 0
     @e_up_places = 0

@@ -21,29 +21,22 @@ class TrainsController < ApplicationController
 
   # POST /trains
     def create
-    @train = Train.new(train_params)
-
-    respond_to do |format|
+    @train = Train.new(train_params)  
       if @train.save
-        format.html { redirect_to @train, notice: 'Train was successfully created.' }
-        format.json { render :show, status: :created, location: @train }
+      redirect_to @train, notice: 'Train was successfully created.'       
       else
-        format.html { render :new }
-        format.json { render json: @train.errors, status: :unprocessable_entity }
-      end
+      render :new      
+      end    
     end
-  end
 
   # PATCH/PUT /trains/1
-   def update
-    respond_to do |format|
+   def update   
       if @train.update(train_params)
         redirect_to @train, notice: 'Train was successfully updated.'        
       else
       render :edit   
       end
-    end
-  end
+    end  
 
   # DELETE /trains/1
    def destroy
@@ -51,7 +44,7 @@ class TrainsController < ApplicationController
     redirect_to trains_url, notice: 'Train was successfully destroyed.'      
     end
   end
-
+  
   private
     def set_train
       @train = Train.find(params[:id])
@@ -59,6 +52,6 @@ class TrainsController < ApplicationController
 
    
     def train_params
-      params.require(:train).permit(:number, :current_route_id)
+      params.require(:train).permit(:number, :current_route_id, :formation)
     end
 
