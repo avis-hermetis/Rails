@@ -37,10 +37,18 @@ class RoutesController < ApplicationController
     redirect_to routes_path
   end
 
+  def set_sequence
+    if @route.update(route_params)
+      redirect_to @route
+    else
+      render :new
+    end
+  end
+
   private
 
   def set_route
-    @route = Route.find(params[:id])
+    @route = Route.find(params[:id])    
   end
 
   def route_params

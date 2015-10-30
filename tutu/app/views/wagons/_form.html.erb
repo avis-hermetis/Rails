@@ -6,13 +6,23 @@
 <%= f.label(:sort, "купе") %>
 <%= f.radio_button(:sort, "плацкарт") %>
 <%= f.label(:sort, "плацкарт") %>
+<%= f.radio_button(:sort, "св") %>
+<%= f.label(:sort, "св") %>
+<%= f.radio_button(:sort, "сидячий") %>
+<%= f.label(:sort, "сидячий") %>
  </div>
 
  <div class="field">
     <%= f.label :upper_places, "Кол-во верхних мест" %><br>
     <%= f.text_field :upper_places %><br>
     <%= f.label :lower_places, "Кол-во нижних мест" %><br>
-    <%= f.text_field :lower_places %>
+    <%= f.text_field :lower_places %><br>
+    <%= f.label :side_upper_places, "Кол-во верхних боковых мест" %><br>
+    <%= f.text_field :side_upper_places %><br>
+    <%= f.label :side_lower_places, "Кол-во нижних боковых мест" %><br>
+    <%= f.text_field :side_lower_places %><br>
+    <%= f.label :seats, "Кол-во кресел" %><br>
+    <%= f.text_field :seats %>
   </div>
  
   <div class="field">
