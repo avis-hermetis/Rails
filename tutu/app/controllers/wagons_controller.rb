@@ -1,19 +1,21 @@
 class WagonsController < ApplicationController
-  before_action :set_wagon, only: [:show, :edit, :update, :destroy]
+  before_action :set_train_from_train_id, only: [:new, :create]
+  before_action :set_wagon_from_wagon_id, except: [:new, :create]
+  
 
   def index
     @wagons = Wagon.all
   end
 
- def show    
+  def show 
   end
   
-  def new
-    @wagon = Wagon.new
+  def new    
+    @wagon = @train.wagons.new
   end
 
   def create
-    @wagon = Wagon.new(wagon_params)
+    @wagon = @train.wagons.new(wagon_params)
        if @wagon.save
       redirect_to @wagon
     else
@@ -34,17 +36,21 @@ class WagonsController < ApplicationController
 
   def destroy     
     @wagon.destroy
-    redirect_to wagon_path
+    redirect_to wagons_path
   end
 
   private
 
-  def set_wagon
+  def set_train_from_train_id
+    @train = Train.find(params[:train_id])
+  end
+
+  def set_wagon_from_wagon_id
     @wagon = Wagon.find(params[:id])
   end
 
   def wagon_params
-    params.require(:wagon).permit(:sort, :upper_places, :lower_places, :train_id)
+    params.require(:wagon).permit(:sort, :upper_places, :lower_places)
   end
 
 end

@@ -7,10 +7,20 @@
 
 <p>
   <strong>Количество мест:</strong><br>
+  <% if @wagon.sort == "плацкарт" %>
   <%= "#{@wagon.upper_places} верхних" %><br>
-  <%= "#{@wagon.lower_places} нижних" %><br>  
+  <%= "#{@wagon.lower_places} нижних" %><br>
+  <%= "#{@wagon.side_upper_places} верхних боковых" %><br>
+  <%= "#{@wagon.side_lower_places} нижних боковых" %><br>
+  <% elsif @wagon.sort == "сидячий" %>
+  <%= "#{@wagon.type} сидячих" %><br>
+  <% else %>
+  <%= "#{@wagon.upper_places} верхних" %><br>
+  <%= "#{@wagon.lower_places} нижних" %><br>
+  <% end %>    
 </p>
 
 <%= link_to 'Редактировать', edit_wagon_path(@wagon) %> |
-<%= link_to 'Назад', wagons_path %>
+<%= link_to 'Удалить', wagon_path(@wagon), method: :delete %> |
+<%= link_to 'Назад', @wagon.train %>
 
