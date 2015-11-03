@@ -10,6 +10,6 @@ class Route < ActiveRecord::Base
   before_validation :set_title
 
   def set_title
-    self.title = "#{railway_stations.first.title} - #{railway_stations.second.title}"
+    self.title = "#{self.railway_stations.first.title} - #{self.railway_stations.last.title}"
   end
 end
