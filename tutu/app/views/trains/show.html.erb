@@ -5,7 +5,36 @@
   <%= @train.number %>
 </p>
 
+
 <p>
+<strong>Вагоны: </strong>  
+  <ul>
+    <% if @train.formation %>     
+      <% @train.wagons.direct_formation.each do |wagon| %><br>
+      <li><%= link_to "Вагон №#{wagon.number}", wagon %></li>
+      <% end %>
+    <% else %>
+      <% @train.wagons.reverse_formation.each do |wagon| %><br>
+      <li><%= link_to "Вагон №#{wagon.number}", wagon %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+<strong>Сортировать вагоны</strong>
+</p>
+</p>
+<p>
+  <%= form_for @train, url: {action: "show"} do |f| %>
+  <%= f.check_box(:formation) %>
+  <%= f.label(:formation, "С головы") %><br><br>
+  <%= f.submit "Сортировать" %>
+<% end %>
+</p><br>
+
+ <%= link_to "Добавить вагон", new_train_wagon_path(@train) %><br>
+
   <strong>Кол-во купейных вагонов: </strong>
   <%= c_wagon_amt = @train.c_wagon_amt %><br>
 
