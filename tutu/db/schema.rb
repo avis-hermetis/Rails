@@ -20,11 +20,11 @@ ActiveRecord::Schema.define(version: 20151102113052) do
   end
 
   create_table "railway_stations_routes", force: :cascade do |t|
-    t.integer  "railway_station_id"
-    t.integer  "route_id"
-    t.integer  "position"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.integer "railway_station_id"
+    t.integer "route_id"
+    t.integer "position"
+    t.string  "start_time"
+    t.string  "end_time"
   end
 
   create_table "routes", force: :cascade do |t|

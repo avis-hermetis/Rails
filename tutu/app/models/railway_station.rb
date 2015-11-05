@@ -11,9 +11,9 @@ class RailwayStation < ActiveRecord::Base
 
   def update_position_and_time(route, params)    
     station_route = station_route(route)
-    station_route.update(position: params[:position]) if station_route
-    station_route.update(start_time: params[:start_time]) if station_route
-    station_route.update(end_time: params[:end_time]) if station_route   
+    station_route.update(position: params[:position], start_time: params[:start_time], 
+     end_time: params[:end_time] ) if station_route
+  
   end
 
   def position_in(route)  

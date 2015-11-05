@@ -40,10 +40,10 @@
               <%= number_field_tag :position, station.position_in(@route) %>
             </td>
             <td>
-              <%= datetime_field_tag :start_date, station.start_time_in(@route) %>
+              <%= text_field_tag :start_time, station.start_time_in(@route) %>
             </td>
             <td>
-              <%= datetime_field_tag :end_date, station.end_time_in(@route) %>
+              <%= text_field_tag :end_time, station.end_time_in(@route) %>
             </td>
             <td>
               <%= hidden_field_tag :route_id, @route.id %>
